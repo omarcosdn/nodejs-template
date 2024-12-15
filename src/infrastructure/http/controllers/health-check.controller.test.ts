@@ -1,7 +1,6 @@
 import 'reflect-metadata';
-import {HealthCheckController} from '@/infrastructure/controllers/health-check.controller';
-import {HttpStatus, RestRequest} from '@/infrastructure/types';
-
+import {HealthCheckController} from '@/infrastructure/http/controllers/health-check.controller';
+import {HttpStatus, RestRequest} from '@/infrastructure/http/types';
 
 describe('HealthCheckController', () => {
   let sut: HealthCheckController;

@@ -45,6 +45,7 @@ yarn upgrade-interactive
 ```
 
 ### 3. **Variáveis de Ambiente**
+
 Crie um arquivo `.env` na raiz do projeto e configure suas variáveis de ambiente com base no arquivo `.env.example`.
 
 ### 4. **Scripts Disponíveis**
@@ -76,6 +77,7 @@ No arquivo `package.json`, você encontrará os seguintes scripts:
 ## ▶️ Executando o Projeto
 
 ### 1. **Modo Desenvolvimento**
+
 Execute o projeto com hot reload:
 
 ```bash
@@ -83,6 +85,7 @@ yarn dev
 ```
 
 ### 2. **Executando Testes**
+
 Para rodar os testes:
 
 ```bash

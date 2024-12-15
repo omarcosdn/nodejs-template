@@ -1,5 +1,5 @@
 import {injectable} from 'tsyringe';
-import {HttpStatus, RestController, RestRequest, RestResponse} from '@/infrastructure/types';
+import {HttpStatus, RestController, RestRequest, RestResponse} from '@/infrastructure/http/types';
 
 @injectable()
 export class HealthCheckController implements RestController<string> {

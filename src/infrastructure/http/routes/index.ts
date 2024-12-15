@@ -1,7 +1,7 @@
-import {HttpMethod, HttpRoute, RestRequest} from '@/infrastructure/types';
+import {HttpMethod, HttpRoute, RestRequest} from '@/infrastructure/http/types';
 import {NextFunction, Request, Response, Router} from 'express';
 import {container} from 'tsyringe';
-import {HealthCheckController} from '@/infrastructure/controllers/health-check.controller';
+import {HealthCheckController} from '@/infrastructure/http/controllers/health-check.controller';
 
 const routes: HttpRoute[] = [
   {

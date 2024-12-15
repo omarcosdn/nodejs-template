@@ -1,9 +1,9 @@
 import 'reflect-metadata';
 import express from 'express';
 import cors from 'cors';
-import {errorHandler, routeNotFound} from '@/infrastructure/middlewares';
-import {initializeRoutes} from '@/infrastructure/routes';
-import {Env} from '@/infrastructure/configurations';
+import {errorHandler, routeNotFound} from '@/infrastructure/http/middlewares';
+import {initializeRoutes} from '@/infrastructure/http/routes';
+import {Env} from 'src/infrastructure/config';
 import {logger} from '@/shared/logger';
 
 const app = express();
