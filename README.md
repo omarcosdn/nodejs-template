@@ -109,3 +109,33 @@ yarn test:coverage
 - **Docker**: Contêinerização.
 
 ---
+
+## 🚀 Construção e Execução da Imagem Docker
+
+Para construir a imagem Docker localmente e executar a aplicação, siga os passos abaixo:
+
+### 1. **Build da Imagem**
+
+Crie a imagem Docker utilizando os seguintes comandos:
+
+```bash
+docker build -t nodejs-template:1.0.0 -t nodejs-template:latest .
+```
+
+### 2. **Executar a Imagem**
+
+Execute o container da aplicação expondo a porta 3000:
+
+```bash
+docker run -p 3000:3000 nodejs-template
+```
+
+### 3. **Testar a Aplicação**
+
+Após a execução, a aplicação estará acessível em:
+
+```bash
+curl --location 'http://localhost:3000/api/template-service/health'
+```
+
+---

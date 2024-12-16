@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import {errorHandler, routeNotFound} from '@/infrastructure/http/middlewares';
 import {initializeRoutes} from '@/infrastructure/http/routes';
-import {Env} from 'src/infrastructure/config';
+import {Env} from '@/infrastructure/config';
 import {logger} from '@/shared/logger';
 
 const app = express();
