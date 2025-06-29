@@ -1,95 +1,105 @@
 import 'tsarch/dist/jest';
 import {filesOfProject} from 'tsarch';
 
-describe('core module', () => {
+// Architectural rules for the core module
+
+describe('Core Module Architecture', () => {
   jest.setTimeout(60000);
 
-  it('should be independent from infrastructure', async () => {
-    const rule = filesOfProject().inFolder('core').shouldNot().dependOnFiles().inFolder('infrastructure');
-
+  it('core should not depend on infrastructure', async () => {
+    const rule = filesOfProject()
+      .inFolder('core')
+      .shouldNot()
+      .dependOnFiles()
+      .inFolder('infrastructure');
     expect(rule).toPassAsync();
   });
 
-  describe('naming conventions', () => {
-    it('entities should follow naming convention', async () => {
-      const rule = filesOfProject().inFolder('entities').should().matchPattern('.*entity\.ts');
-
+  describe('Naming Conventions', () => {
+    it('entity files must end with .entity.ts', async () => {
+      const rule = filesOfProject()
+        .inFolder('entities')
+        .should()
+        .matchPattern('.*entity.ts');
       expect(rule).toPassAsync();
     });
 
-    it('gateways should follow naming convention', async () => {
-      const rule = filesOfProject().inFolder('gateways').should().matchPattern('.*gateway\.ts');
-
+    it('gateway files must end with .gateway.ts', async () => {
+      const rule = filesOfProject()
+        .inFolder('gateways')
+        .should()
+        .matchPattern('.*gateway.ts');
       expect(rule).toPassAsync();
     });
 
-    it('repositories should follow naming convention', async () => {
-      const rule = filesOfProject().inFolder('repositories').should().matchPattern('.*repository\.ts');
-
+    it('repository files must end with .repository.ts', async () => {
+      const rule = filesOfProject()
+        .inFolder('repositories')
+        .should()
+        .matchPattern('.*repository.ts');
       expect(rule).toPassAsync();
     });
 
-    it('services should follow naming convention', async () => {
-      const rule = filesOfProject().inFolder('services').should().matchPattern('.*service\.ts');
-
+    it('service files must end with .service.ts', async () => {
+      const rule = filesOfProject()
+        .inFolder('services')
+        .should()
+        .matchPattern('.*service.ts');
       expect(rule).toPassAsync();
     });
 
-    it('usecases should follow naming convention', async () => {
-      const rule = filesOfProject().inFolder('usecases').should().matchPattern('.*usecase\.ts');
-
+    it('usecase files must end with .usecase.ts', async () => {
+      const rule = filesOfProject()
+        .inFolder('usecases')
+        .should()
+        .matchPattern('.*usecase.ts');
       expect(rule).toPassAsync();
     });
   });
 
-  describe('dependency checks', () => {
-    it('entities should not depend on repositories, services and usecases', async () => {
+  describe('Dependency Rules', () => {
+    it('entities must not depend on repositories, services, or usecases', async () => {
       const rule = filesOfProject()
-        .matchingPattern('.*entity\.ts')
+        .matchingPattern('.*entity.ts')
         .shouldNot()
         .dependOnFiles()
-        .matchingPattern('.*service\.ts|.*repository\.ts|.*usecase\.ts');
-
+        .matchingPattern('.*service.ts|.*repository.ts|.*usecase.ts');
       expect(rule).toPassAsync();
     });
 
-    it('gateways should not depend on repositories, services and usecases', async () => {
+    it('gateways must not depend on repositories, services, or usecases', async () => {
       const rule = filesOfProject()
-        .matchingPattern('.*gateway\.ts')
+        .matchingPattern('.*gateway.ts')
         .shouldNot()
         .dependOnFiles()
-        .matchingPattern('.*service\.ts|.*usecase\.ts|.*repository\.ts');
-
+        .matchingPattern('.*service.ts|.*usecase.ts|.*repository.ts');
       expect(rule).toPassAsync();
     });
 
-    it('repositories should not depend on services, usecases and gateways', async () => {
+    it('repositories must not depend on services, usecases, or gateways', async () => {
       const rule = filesOfProject()
-        .matchingPattern('.*repository\.ts')
+        .matchingPattern('.*repository.ts')
         .shouldNot()
         .dependOnFiles()
-        .matchingPattern('.*service\.ts|.*usecase\.ts|.*gateway\.ts');
-
+        .matchingPattern('.*service.ts|.*usecase.ts|.*gateway.ts');
       expect(rule).toPassAsync();
     });
 
-    it('services should not depend on usecases', async () => {
+    it('services must not depend on usecases', async () => {
       const rule = filesOfProject()
-        .matchingPattern('.*service\.ts')
+        .matchingPattern('.*service.ts')
         .shouldNot()
         .dependOnFiles()
-        .matchingPattern('.*usecase\.ts');
-
+        .matchingPattern('.*usecase.ts');
       expect(rule).toPassAsync();
     });
 
-    it('usecases should not depend on usecases', async () => {
+    it('usecases must not depend on other usecases', async () => {
       const rule = filesOfProject()
-        .matchingPattern('.*usecase\.ts')
+        .matchingPattern('.*usecase.ts')
         .shouldNot()
         .dependOnFiles()
-        .matchingPattern('.*usecase\.ts');
-
+        .matchingPattern('.*usecase.ts');
       expect(rule).toPassAsync();
     });
   });

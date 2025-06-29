@@ -29,113 +29,116 @@ Este repositório é um template para projetos Node.js. Ele segue boas práticas
 ### 1. **Instalação de Dependências**
 
 ```bash
-# Usando Yarn
 yarn install
-
-# Ou usando NPM
+# ou
 npm install
 ```
 
-### 2. **Atualizando Dependências**
+### 2. **Configuração de Variáveis de Ambiente**
 
-Use o comando `yarn upgrade-interactive` para atualizar as dependências de forma interativa:
+Crie um arquivo `.env` na raiz do projeto com base no `.env.example`:
 
 ```bash
-yarn upgrade-interactive
+cp .env.example .env
 ```
 
-### 3. **Variáveis de Ambiente**
+Edite o `.env` conforme necessário para seu ambiente.
 
-Crie um arquivo `.env` na raiz do projeto e configure suas variáveis de ambiente com base no arquivo `.env.example`.
+### 3. **Scripts Disponíveis**
 
-### 4. **Scripts Disponíveis**
+Veja os scripts principais no `package.json`:
 
-No arquivo `package.json`, você encontrará os seguintes scripts:
-
-```json
-"scripts": {
-  "clean": "rimraf out && rimraf coverage",
-  "build": "tsc",
-  "start": "node -r tsconfig-paths/register --env-file=.env out/main.js",
-  "dev": "ts-node-dev -r tsconfig-paths/register --env-file=.env src/main.ts",
-  "test": "jest --runInBand",
-  "test:coverage": "jest --runInBand --coverage",
-  "format": "prettier --write ."
-}
-```
-
-- **`clean`**: Exclui as pastas /out e /coverage
-- **`build`**: Transpila o projeto para JavaScript.
-- **`start`**: Executa a aplicação em produção.
-- **`dev`**: Executa a aplicação em modo de desenvolvimento.
-- **`test`**: Executa todos os testes com Jest.
-- **`test:coverage`**: Gera um relatório de cobertura de testes.
-- **`format`**: Formata o código usando Prettier.
+- `yarn dev`: Executa a aplicação em modo desenvolvimento (hot reload)
+- `yarn build`: Transpila o projeto para JavaScript
+- `yarn start`: Executa a aplicação em produção
+- `yarn test`: Executa todos os testes
+- `yarn test:coverage`: Gera relatório de cobertura
+- `yarn format`: Formata o código com Prettier
 
 ---
 
-## ▶️ Executando o Projeto
+## ▶️ Executando Localmente
 
 ### 1. **Modo Desenvolvimento**
-
-Execute o projeto com hot reload:
 
 ```bash
 yarn dev
 ```
 
-### 2. **Executando Testes**
+### 2. **Modo Produção**
 
-Para rodar os testes:
+```bash
+yarn build
+yarn start
+```
+
+### 3. **Executando Testes**
 
 ```bash
 yarn test
-```
-
-Para visualizar a cobertura dos testes:
-
-```bash
+# ou
 yarn test:coverage
 ```
 
 ---
 
-## 🔧 Tecnologias Utilizadas
+## 🐳 Executando com Docker
 
-- **Node.js**: Ambiente de execução.
-- **TypeScript**: Superset de JavaScript para tipagem estática.
-- **Express.js**: Framework minimalista para APIs.
-- **Jest**: Framework de testes.
-- **Docker**: Contêinerização.
+### 1. **Preparação**
 
----
+- Certifique-se de ter o Docker instalado e em execução.
+- Crie o arquivo `.env` na raiz do projeto (veja instruções acima).
 
-## 🚀 Construção e Execução da Imagem Docker
-
-Para construir a imagem Docker localmente e executar a aplicação, siga os passos abaixo:
-
-### 1. **Build da Imagem**
-
-Crie a imagem Docker utilizando os seguintes comandos:
+### 2. **Build da Imagem Docker**
 
 ```bash
 docker build -t nodejs-template:1.0.0 -t nodejs-template:latest .
 ```
 
-### 2. **Executar a Imagem**
-
-Execute o container da aplicação expondo a porta 3000:
+### 3. **Executando o Container**
 
 ```bash
-docker run -p 3000:3000 nodejs-template
+docker run --env-file .env -p 3000:3000 nodejs-template:latest
 ```
 
-### 3. **Testar a Aplicação**
+A aplicação estará disponível em: [http://localhost:3000/api/template-service/health](http://localhost:3000/api/template-service/health)
 
-Após a execução, a aplicação estará acessível em:
+### 4. **Executando com Docker Compose (Opcional)**
+
+Se houver um arquivo `docker-compose.yml`:
 
 ```bash
-curl --location 'http://localhost:3000/api/template-service/health'
+docker-compose up --build
 ```
+
+Isso irá subir a aplicação e serviços dependentes (ex: banco de dados, RabbitMQ).
+
+---
+
+## 🧪 Rodando Testes dentro do Container (Opcional)
+
+Se desejar rodar os testes dentro do container:
+
+```bash
+docker run --env-file .env nodejs-template:latest yarn test
+```
+
+---
+
+## 🛠️ Troubleshooting
+
+- Certifique-se de que as portas necessárias (ex: 3000) estejam livres.
+- Verifique se o arquivo `.env` está corretamente configurado.
+- Para logs detalhados, consulte a saída do container ou utilize `docker logs <container_id>`.
+
+---
+
+## 🔧 Tecnologias Utilizadas
+
+- **Node.js**
+- **TypeScript**
+- **Express.js**
+- **Jest**
+- **Docker**
 
 ---
