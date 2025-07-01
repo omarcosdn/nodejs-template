@@ -26,8 +26,21 @@ jobs:
       - name: Generate coverage badge JSON
         run: |
           mkdir -p .coverage
-          COVERAGE=$(jq '.total.lines.pct' coverage/coverage-summary.json)
-          echo "{\"schemaVersion\":1,\"label\":\"coverage\",\"message\":\"${COVERAGE}%\",\"color\":\"brightgreen\"}" > .coverage/coverage-badge.json
+          LINES=$(jq '.total.lines.pct' coverage/coverage-summary.json)
+          FUNCTIONS=$(jq '.total.functions.pct' coverage/coverage-summary.json)
+          STATEMENTS=$(jq '.total.statements.pct' coverage/coverage-summary.json)
+          BRANCHES=$(jq '.total.branches.pct' coverage/coverage-summary.json)
+          echo "{
+            \"schemaVersion\": 1,
+            \"label\": \"coverage\",
+            \"color\": \"brightgreen\",
+            \"total\": {
+              \"lines\": { \"pct\": $LINES },
+              \"functions\": { \"pct\": $FUNCTIONS },
+              \"statements\": { \"pct\": $STATEMENTS },
+              \"branches\": { \"pct\": $BRANCHES }
+            }
+          }" > .coverage/coverage-badge.json
 
       - name: Commit and push coverage badge
         run: |
