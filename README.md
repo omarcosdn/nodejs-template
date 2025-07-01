@@ -1,12 +1,7 @@
-[![Node.js](https://img.shields.io/badge/Node.js-20.x-green?logo=node.js)](https://nodejs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript)](https://www.typescriptlang.org/)
-[![Express](https://img.shields.io/badge/Express-4.x-lightgrey?logo=express)](https://expressjs.com/)
-[![Jest](https://img.shields.io/badge/Jest-29.x-brightgreen?logo=jest)](https://jestjs.io/)
-[![Docker](https://img.shields.io/badge/Docker-ready-blue?logo=docker)](https://www.docker.com/)
-[![Coverage Lines](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/omarcosdn/nodejs-template/coverage-report/coverage-summary.json&label=linhas&query=$.total.lines.pct)](https://github.com/omarcosdn/nodejs-template/tree/coverage-report)
-[![Coverage Functions](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/omarcosdn/nodejs-template/coverage-report/coverage-summary.json&label=funções&query=$.total.functions.pct)](https://github.com/omarcosdn/nodejs-template/tree/coverage-report)
-[![Coverage Statements](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/omarcosdn/nodejs-template/coverage-report/coverage-summary.json&label=statements&query=$.total.statements.pct)](https://github.com/omarcosdn/nodejs-template/tree/coverage-report)
-[![Coverage Branches](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/omarcosdn/nodejs-template/coverage-report/coverage-summary.json&label=branches&query=$.total.branches.pct)](https://github.com/omarcosdn/nodejs-template/tree/coverage-report)
+[![Coverage Lines](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/omarcosdn/nodejs-template/main/.coverage/coverage-badge.json&label=lines&query=$.total.lines.pct)](https://github.com/omarcosdn/nodejs-template/tree/main)
+[![Coverage Functions](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/omarcosdn/nodejs-template/main/.coverage/coverage-badge.json&label=functions&query=$.total.functions.pct)](https://github.com/omarcosdn/nodejs-template/tree/main)
+[![Coverage Statements](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/omarcosdn/nodejs-template/main/.coverage/coverage-badge.json&label=statements&query=$.total.statements.pct)](https://github.com/omarcosdn/nodejs-template/tree/main)
+[![Coverage Branches](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/omarcosdn/nodejs-template/main/.coverage/coverage-badge.json&label=branches&query=$.total.branches.pct)](https://github.com/omarcosdn/nodejs-template/tree/main)
 
 # Node.js Template Project
 
