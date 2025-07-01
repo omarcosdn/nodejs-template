@@ -10,6 +10,7 @@ const config: JestConfigWithTsJest = {
     '@/shared/(.*)': '<rootDir>/src/shared/$1',
   },
   setupFiles: ['<rootDir>/jest.setup.ts'],
+  coverageReporters: ['json-summary', 'lcov', 'text'],
 };
 
 export default config;
