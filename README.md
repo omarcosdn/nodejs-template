@@ -3,7 +3,10 @@
 [![Express](https://img.shields.io/badge/Express-4.x-lightgrey?logo=express)](https://expressjs.com/)
 [![Jest](https://img.shields.io/badge/Jest-29.x-brightgreen?logo=jest)](https://jestjs.io/)
 [![Docker](https://img.shields.io/badge/Docker-ready-blue?logo=docker)](https://www.docker.com/)
-[![Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/omarcosdn/nodejs-template/coverage-report/coverage-summary.json&label=coverage&query=$.total.lines.pct)](https://github.com/omarcosdn/nodejs-template/tree/coverage-report)
+[![Coverage Lines](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/omarcosdn/nodejs-template/coverage-report/coverage-summary.json&label=linhas&query=$.total.lines.pct)](https://github.com/omarcosdn/nodejs-template/tree/coverage-report)
+[![Coverage Functions](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/omarcosdn/nodejs-template/coverage-report/coverage-summary.json&label=funções&query=$.total.functions.pct)](https://github.com/omarcosdn/nodejs-template/tree/coverage-report)
+[![Coverage Statements](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/omarcosdn/nodejs-template/coverage-report/coverage-summary.json&label=statements&query=$.total.statements.pct)](https://github.com/omarcosdn/nodejs-template/tree/coverage-report)
+[![Coverage Branches](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/omarcosdn/nodejs-template/coverage-report/coverage-summary.json&label=branches&query=$.total.branches.pct)](https://github.com/omarcosdn/nodejs-template/tree/coverage-report)
 
 # Node.js Template Project
 
