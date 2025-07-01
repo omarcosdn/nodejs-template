@@ -6,8 +6,7 @@
   "scripts": {
     "clean": "rimraf out && rimraf coverage",
     "build": "tsc",
-    "start": "node -r tsconfig-paths/register --env-file=.env out/main.js",
-    "start:otel": "node -r tsconfig-paths/register --env-file=.env -r ./out/shared/otel/index.js out/main.js",
+    "start": "node -r tsconfig-paths/register -r ./out/shared/otel/index.js out/main.js",
     "dev": "ts-node-dev -r tsconfig-paths/register --env-file=.env src/main.ts",
     "dev:otel": "ts-node-dev -r tsconfig-paths/register --env-file=.env -r ./src/shared/otel/index.ts src/main.ts",
     "test": "jest --runInBand",

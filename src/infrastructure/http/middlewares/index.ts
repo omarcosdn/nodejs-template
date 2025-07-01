@@ -3,7 +3,32 @@ import {HttpStatus} from '@/infrastructure/http/types';
 import {DomainException, NotFoundException, WebException} from '@/shared/exceptions';
 import {logger} from '@/shared/logger';
 
-export function errorHandler(err: Error, req: Request, res: Response, next: NextFunction): void {
+export function logRequest(req: Request, res: Response, next: NextFunction): void {
+  const headers = {...req.headers};
+  if ('authorization' in headers) {
+    headers.authorization = '***';
+  }
+
+  const start = process.hrtime.bigint();
+  logger.info({method: req.method, url: req.originalUrl, headers}, `Entering: ${req.method} ${req.originalUrl}`);
+
+  res.on('finish', () => {
+    const durationMs = Number(process.hrtime.bigint() - start) / 1_000_000;
+    logger.info(
+      {
+        method: req.method,
+        url: req.originalUrl,
+        status: res.statusCode,
+        durationMs: durationMs.toFixed(2),
+      },
+      `Exiting: ${req.method} ${req.originalUrl} ${res.statusCode} ${durationMs.toFixed(2)}ms`
+    );
+  });
+
+  next();
+}
+
+export function errorHandler(err: Error, _req: Request, res: Response, _next: NextFunction): void {
   if (err instanceof DomainException) {
     logger.warn(err, `${err.name} - Message: ${err.message}`);
 
@@ -35,6 +60,6 @@ export function errorHandler(err: Error, req: Request, res: Response, next: Next
   });
 }
 
-export function routeNotFound(req: Request, res: Response, next: NextFunction): void {
+export function routeNotFound(req: Request, _res: Response, next: NextFunction): void {
   return next(new NotFoundException(`Cannot ${req.method} ${req.originalUrl}`));
 }

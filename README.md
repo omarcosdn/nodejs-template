@@ -57,6 +57,40 @@ Veja os scripts principais no `package.json`:
 
 ---
 
+## 🐳 Buildando e Executando com Docker
+
+### 1. **Build e execução do ambiente de produção**
+
+Utiliza o `Dockerfile` padrão, que gera uma imagem enxuta apenas com dependências de produção e o código transpilado.
+
+```bash
+# Build da imagem de produção
+# (usa o Dockerfile padrão)
+docker build -t nodejs-template:prod .
+
+# Executa o container de produção
+# (usa as variáveis do .env, expõe a porta 4000)
+docker run --env-file .env -p 4000:4000 nodejs-template:prod
+```
+
+### 2. **Build e execução do ambiente de desenvolvimento**
+
+Utiliza o `Dockerfile.dev`, que instala todas as dependências (incluindo dev), compila o projeto e roda em modo development.
+
+```bash
+# Build da imagem de desenvolvimento
+# (usa o Dockerfile.dev)
+docker build -f Dockerfile.dev -t nodejs-template:dev .
+
+# Executa o container de desenvolvimento
+# (usa as variáveis do .env, expõe a porta 4000)
+docker run --env-file .env -p 4000:4000 nodejs-template:dev
+```
+
+> **Dica:** Use o Docker Compose para orquestrar múltiplos serviços e facilitar o desenvolvimento local.
+
+---
+
 ## ▶️ Executando Localmente
 
 ### 1. **Modo Desenvolvimento**
@@ -82,52 +116,19 @@ yarn test:coverage
 
 ---
 
-## 🐳 Executando com Docker
-
-### 1. **Preparação**
-
-- Certifique-se de ter o Docker instalado e em execução.
-- Crie o arquivo `.env` na raiz do projeto (veja instruções acima).
-
-### 2. **Build da Imagem Docker**
-
-```bash
-docker build -t nodejs-template:1.0.0 -t nodejs-template:latest .
-```
-
-### 3. **Executando o Container**
-
-```bash
-docker run --env-file .env -p 3000:3000 nodejs-template:latest
-```
-
-A aplicação estará disponível em: [http://localhost:3000/api/template-service/health](http://localhost:3000/api/template-service/health)
-
-### 4. **Executando com Docker Compose (Opcional)**
-
-Se houver um arquivo `docker-compose.yml`:
-
-```bash
-docker-compose up --build
-```
-
-Isso irá subir a aplicação e serviços dependentes (ex: banco de dados, RabbitMQ).
-
----
-
 ## 🧪 Rodando Testes dentro do Container (Opcional)
 
 Se desejar rodar os testes dentro do container:
 
 ```bash
-docker run --env-file .env nodejs-template:latest yarn test
+docker run nodejs-template:latest yarn test
 ```
 
 ---
 
 ## 🛠️ Troubleshooting
 
-- Certifique-se de que as portas necessárias (ex: 3000) estejam livres.
+- Certifique-se de que as portas necessárias (ex: 4000) estejam livres.
 - Verifique se o arquivo `.env` está corretamente configurado.
 - Para logs detalhados, consulte a saída do container ou utilize `docker logs <container_id>`.
 
