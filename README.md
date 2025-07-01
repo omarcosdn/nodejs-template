@@ -1,3 +1,10 @@
+[![Node.js](https://img.shields.io/badge/Node.js-20.x-green?logo=node.js)](https://nodejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Express](https://img.shields.io/badge/Express-4.x-lightgrey?logo=express)](https://expressjs.com/)
+[![Jest](https://img.shields.io/badge/Jest-29.x-brightgreen?logo=jest)](https://jestjs.io/)
+[![Docker](https://img.shields.io/badge/Docker-ready-blue?logo=docker)](https://www.docker.com/)
+[![Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/omarcosdn/nodejs-template/coverage-report/coverage-summary.json&label=coverage)](https://github.com/omarcosdn/nodejs-template/tree/coverage-report)
+
 # Node.js Template Project
 
 Este repositório é um template para projetos Node.js. Ele segue boas práticas de desenvolvimento, utilizando conceitos como **Clean Architecture**, **DDD (Domain-Driven Design)** e estrutura modular.
